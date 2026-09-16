@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CARTE. Connaissez-vous les sites (et autres trésors du patrimoine) de Normandie classés à l'Unesco ?</title>
+<style>
+  :root {
+    --fr3-black: #202020;
+    --grey7: #5c5c5c;
+    --grey8: #424242;
+    --blue2: #0062ae;
+    --beige: #f9f4e9;
+    --stabilo: #fff2b0;
+    --grey3: #ddd;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: Brown, Arial, sans-serif;
+    color: var(--grey8);
+    background: #fff;
+    line-height: 1;
+  }
+  a { color: var(--blue2); }
+
+  /* ---------- Header ---------- */
+  .header-wrapper { border-bottom: 1px solid #e6e6e6; }
+  .header-main {
+    max-width: 1328px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+  }
+  .header-logo {
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--fr3-black);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  .header-logo span { color: #e5281e; }
+  .header-menu { display: flex; gap: 20px; align-items: center; }
+  .header-menu a { font-size: 13px; color: var(--grey8); text-decoration: none; padding: 6px 2px; }
+  .header-menu a.is--region {
+    background: var(--blue2);
+    color: #fff;
+    border-radius: 3px;
+    padding: 6px 10px;
+    font-weight: 700;
+  }
+
+  /* ---------- En-tête article ---------- */
+  .headArticle {
+    background-color: var(--beige);
+    width: 100%;
+    padding: 132px 24px 48px;
+    overflow: hidden;
+  }
+  .headArticlecontainer {
+    max-width: 1328px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .headArticleblock--title { flex: 1 1 50%; min-width: 280px; }
+  .headArticleblock--media { flex: 1 1 45%; min-width: 280px; }
+
+  .breadcrumb { display: block; margin-bottom: 24px; }
+  .breadcrumblist { display: flex; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; font-size: 14px; line-height: 20px; }
+  .breadcrumblistitem { display: flex; flex-wrap: nowrap; }
+  .breadcrumblistitem a { color: var(--grey8); text-decoration: none; }
+  .breadcrumblistitem a:hover { text-decoration: underline; text-underline-offset: 2px; }
+  .breadcrumblistitem .is--separator { color: #b9b9b9; padding: 0 8px; }
+
+  .headArticletitle {
+    color: var(--fr3-black);
+    font-size: calc(27.43px + 1.43vw);
+    line-height: 1.22;
+    font-weight: 700;
+    margin: 0 0 24px;
+    word-break: break-word;
+  }
+  @media (min-width: 1440px) { .headArticletitle { font-size: 48px; line-height: 57.6px; } }
+
+  .headArticleillustration {
+    border-radius: 5px;
+    overflow: hidden;
+    aspect-ratio: 3/2;
+    background: linear-gradient(135deg, #cfe3d0 0%, #e8f0d8 45%, #f4e6c1 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a6b4f;
+    font-size: 14px;
+    text-align: center;
+    padding: 1rem;
+  }
+  .illustrationcredits { color: var(--grey7); font-size: 12px; line-height: 16px; padding-top: 12px; display: block; }
+
+  .authors { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+  .authorsavatar--placeholder {
+    display: inline-flex; width: 40px; height: 40px; border-radius: 50%;
+    background: #b9b9b9; align-items: center; justify-content: center;
+    color: #fff; font-size: 15px; font-weight: 700;
+  }
+  .authorstext { font-size: 14px; }
+  .author-link { color: var(--fr3-black); text-decoration: none; font-weight: 700; }
+  .author-link:hover { text-decoration: underline; }
+
+  .authordates, .reading-time {
+    color: var(--grey7); font-size: 12px; line-height: 16px; display: flex; align-items: center;
+  }
+  .authordates { margin-bottom: 8px; }
+  .authordates time { margin-left: 4px; }
+  .reading-time { gap: 6px; margin-top: 8px; }
+  .reading-timeicon {
+    width: 12px; height: 12px;
+    background: repeating-linear-gradient(0deg, #5c5c5c 0 1px, transparent 1px 4px);
+    border-radius: 50%; display: inline-block;
+  }
+
+  .article-share--alt.is--default { display: flex; gap: 12px; margin-top: 24px; }
+  .share-btn {
+    height: 36px; width: 36px; border: 1px solid var(--grey3); border-radius: 4px;
+    background: #fff; cursor: pointer; display: inline-flex; align-items: center;
+    justify-content: center; font-size: 15px;
+  }
+  .share-btn:hover { background: #f1f1f1; }
+
+  /* ---------- Corps article ---------- */
+  .articlepage { display: flex; max-width: 1440px; margin: 0 auto; padding: 0 56px; }
+  @media (max-width: 1199px) { .articlepage { padding: 0 24px; } }
+  .articlepage > .article { flex: 1 1 100%; padding: 0 48px; }
+  @media (max-width: 1199px) { .articlepage > .article { padding: 0; } }
+
+  .articlebody { color: var(--grey8); font-size: 18px; font-weight: 400; line-height: 28px; margin: 48px auto; max-width: 630px; position: relative; }
+  .articlebody .articleintro { color: var(--fr3-black); font-size: 22px; font-weight: 700; line-height: 30px; margin-bottom: 48px; }
+  .articlebody strong { background-color: var(--stabilo); }
+  .articlebody p { margin: 0 0 24px; }
+  .articlebody h2 { color: var(--fr3-black); font-size: 26px; line-height: 1.1; margin: 48px 0 16px; font-weight: 700; }
+  .articlebody a:not(.author-link) {
+    border-bottom: 1px solid var(--blue2); color: var(--blue2); padding-bottom: 2px; text-decoration: none;
+  }
+  .articlebody a:not(.author-link):hover { border-bottom: 2px solid var(--blue2); }
+  .articlebody iframe { margin: 48px auto; max-width: 100%; display: block; width: 100%; border: 0; }
+
+  .articlebody blockquote {
+    margin: 48px 0; padding: 0 24px; text-align: center; position: relative;
+  }
+  .articlebody blockquote p {
+    color: var(--fr3-black); font-size: 28px; font-weight: 700; line-height: 38px; margin: 0;
+  }
+  .articlebody blockquote cite {
+    color: var(--grey7); font-size: 16px; font-weight: 700; display: block; margin-top: 8px; font-style: normal;
+  }
+
+  /* ---------- Partage bas ---------- */
+  .article-share--alt.is--article-footer {
+    border-top: 1px solid var(--grey3); display: block; margin: 48px auto 0; padding: 24px 0 0; max-width: 630px;
+  }
+  .article-share--alttitle { color: var(--fr3-black); display: block; font-size: 20px; font-weight: 700; line-height: 28px; margin: 0 0 24px; }
+
+  /* ---------- Newsletter ---------- */
+  .articlenewsletter { padding: 48px 0 0; max-width: 630px; margin: 0 auto; }
+  .newsletter-main { background: #f8f8f8; border-radius: 6px; padding: 24px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+  .newsletter-maindesc { font-size: 14px; line-height: 20px; margin: 0; }
+  .btn--primary {
+    background: var(--blue2); color: #fff; border: none; border-radius: 3px; padding: 12px 20px;
+    font-size: 14px; font-weight: 700; cursor: pointer; font-family: Brown, Arial, sans-serif;
+  }
+
+  /* ---------- Contenus liés ---------- */
+  .related-content-by-tag { border-top: 1px solid var(--grey3); margin: 48px auto 0; padding: 24px 0; max-width: 1000px; }
+  .related-title { color: var(--fr3-black); font-size: 20px; font-weight: 700; margin: 0 0 16px; }
+  .main-cards { display: flex; gap: 24px; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+  .main-card--horizontal { flex: 1 1 240px; max-width: 296px; }
+  .main-cardlink { text-decoration: none; color: inherit; display: block; }
+  .main-cardmedia {
+    border-radius: 5px; overflow: hidden; background: linear-gradient(135deg, #d6c9a3 0%, #cfe0ea 100%);
+    aspect-ratio: 3/2; display: flex; align-items: center; justify-content: center; color: #5b5140; font-size: 13px;
+  }
+  .main-cardtitle { color: var(--fr3-black); font-size: 16px; font-weight: 700; line-height: 20px; margin: 12px 0 0; }
+
+  /* ---------- Footer ---------- */
+  .last-content { background: #f7f3f0; color: #001e55; padding: 48px 24px; text-align: center; margin-top: 48px; }
+  .last-content .baseline { display: block; padding-bottom: 16px; font-size: 15px; }
+
+  /* ---------- Bandeau démo ---------- */
+  .bandeau-demo {
+    background: #fffbe6; border-bottom: 1px dashed #d4a900; color: #6b5900;
+    text-align: center; font-size: 11px; padding: 4px; font-family: Arial, sans-serif;
+  }
+</style>
+</head>
+<body>
+
+<div class="bandeau-demo">Maquette de démonstration — structure et charte reproduites à des fins d'illustration ; texte rédigé indépendamment, sans reprise de l'article original</div>
+
+<header class="header-wrapper">
+  <div class="header-main">
+    <a class="header-logo" href="#">franceinfo<span>:</span></a>
+    <nav class="header-menu">
+      <a href="#">Actualités</a>
+      <a href="#">France</a>
+      <a href="#">Régions</a>
+      <a href="#" class="is--region">Normandie</a>
+      <a href="#">Direct</a>
+      <a href="#">Videos</a>
+    </nav>
+  </div>
+</header>
+
+<div class="headArticle">
+  <div class="headArticlecontainer">
+    <div class="headArticleblock headArticleblock--title">
+      <nav class="breadcrumb" aria-label="Fil d'ariane">
+        <ol class="breadcrumblist">
+          <li class="breadcrumblistitem"><a href="#">Accueil</a></li>
+          <li class="breadcrumblistitem"><span class="is--separator" aria-hidden="true">›</span></li>
+          <li class="breadcrumblistitem"><a href="#">Normandie</a></li>
+          <li class="breadcrumblistitem"><span class="is--separator" aria-hidden="true">›</span></li>
+          <li class="breadcrumblistitem"><a href="#">Calvados</a></li>
+        </ol>
+      </nav>
+
+      <h1 class="headArticletitle">CARTE. Connaissez-vous les sites (et autres trésors du patrimoine) de Normandie classés à l'Unesco ?</h1>
+
+      <div class="authors">
+        <span class="authorsavatar--placeholder">RD</span>
+        <div class="authorstext">
+          <a class="author-link" href="#">Rédaction régionale</a>
+          <div class="authordates">
+            <span>Publié le <time datetime="2026-07-27">27/07/2026 à 12h38</time></span>
+          </div>
+          <div class="reading-time">
+            <span class="reading-timeicon" aria-hidden="true"></span>
+            Temps de lecture 2 min
+          </div>
+        </div>
+      </div>
+
+      <ul class="article-share--alt is--default" style="list-style:none;margin:0;padding:0;display:flex;gap:12px;">
+        <li><button class="share-btn" aria-label="Partager sur Facebook">f</button></li>
+        <li><button class="share-btn" aria-label="Partager sur WhatsApp">w</button></li>
+        <li><button class="share-btn" aria-label="Copier le lien">🔗</button></li>
+      </ul>
+    </div>
+
+    <div class="headArticleblock headArticleblock--media">
+      <figure class="headArticleillustration">
+        Illustration : emplacement réservé<br>(image sous droits non reproduite)
+      </figure>
+      <span class="illustrationcredits">Le Mont-Saint-Michel et sa baie, premier site normand classé au patrimoine mondial, dès 1979.</span>
+    </div>
+  </div>
+</div>
+
+<main class="articlepage" id="mainContent">
+  <div class="article">
+    <div class="articlebody">
+
+      <p class="articleintro">Le week-end du 26 juillet 2026, les cinq plages du Débarquement ont officiellement rejoint la liste du patrimoine mondial de l'Unesco. Elles viennent grossir un ensemble déjà riche de sites normands reconnus internationalement, entre monuments, savoir-faire et traditions vivantes. Petit tour du propriétaire.</p>
+
+      <p>Avant l'arrivée des plages du D-Day, la Normandie comptait déjà <strong>six biens ou pratiques</strong> distingués par les Nations unies. Certains sont mondialement célèbres, d'autres beaucoup plus discrets. Voici, sur la carte ci-dessous puis en détail, l'ensemble de ces trésors répartis sur le territoire normand.</p>
+
+      <iframe
+        src="https://www.google.com/maps/d/embed?mid=1PLACEHOLDER_UNESCO_NORMANDIE"
+        width="640"
+        height="480"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        title="Carte des sites normands classés au patrimoine mondial de l'Unesco">
+      </iframe>
+
+      <h2>Le Mont-Saint-Michel, doyen du classement normand</h2>
+      <p>Impossible de commencer autrement qu'avec la Merveille de l'Occident. Sa baie, unique par l'ampleur de ses marées, et son abbaye perchée sur le rocher forment un ensemble sans équivalent. L'Unesco l'a inscrit dès 1979, récompensant à la fois l'exceptionnel phénomène naturel et la prouesse architecturale des bâtisseurs médiévaux.</p>
+      <p>Près de cinq décennies plus tard, l'attrait ne s'est pas essoufflé : le site continue d'attirer environ trois millions de visiteurs chaque année, ce qui en fait l'un des monuments les plus fréquentés de France.</p>
+
+      <h2>Le Havre, une ville entièrement redessinée après-guerre</h2>
+      <p>Reconnaissance plus tardive pour un cas d'école salué par les urbanistes du monde entier : le centre reconstruit du Havre a intégré la liste en 2005. Rasée aux trois quarts par les bombardements de 1944, la ville a été relevée par l'architecte Auguste Perret, qui a imaginé une cité entièrement pensée autour du béton et d'une trame urbaine régulière.</p>
+      <blockquote>
+        <p>« Une unité et une intégrité remarquables, entre héritage du passé et audace des techniques de construction modernes. »</p>
+        <cite>L'Unesco, à propos du Havre reconstruit</cite>
+      </blockquote>
+
+      <h2>Les fortifications Vauban de Saint-Vaast-la-Hougue</h2>
+      <p>Plus discrète, cette inscription de 2008 concerne un réseau entier d'ouvrages défensifs disséminés aux frontières françaises, dont douze ensembles sont classés. En Normandie, ce sont les tours de Saint-Vaast-la-Hougue, près de Cherbourg, qui incarnent ce génie militaire du XVIIe siècle.</p>
+      <p>L'Unesco y voit un témoignage particulièrement abouti de l'art de la fortification bastionnée, discipline dans laquelle Vauban excellait.</p>
+
+      <h2>La dentelle d'Alençon, un savoir-faire transmis à l'oral</h2>
+      <p>Le patrimoine normand ne se limite pas aux pierres. En 2010, c'est une technique textile d'exception qui rejoint la liste : le point d'Alençon, surnommé la « reine des dentelles ». Sa particularité : un secret de fabrication transmis uniquement de bouche à oreille, entre dentellières.</p>
+      <blockquote>
+        <p>« Un savoir-faire d'un niveau exceptionnel, qui demande un temps de production considérable — près de sept heures par centimètre carré. »</p>
+        <cite>L'Unesco, à propos du point d'Alençon</cite>
+      </blockquote>
+      <p>Compter sept à dix années de pratique avant de maîtriser cet art n'a rien d'exagéré, tant la relation entre l'apprentie et sa formatrice y joue un rôle central.</p>
+
+      <h2>Le carnaval de Granville, tradition maritime centenaire</h2>
+      <p>Direction la Manche pour une autre inscription immatérielle, celle-ci datant de 2016 : le carnaval de Granville. Cette fête populaire, vieille de plus d'un siècle, anime la cité balnéaire pendant cinq jours avant le Mardi gras, entre cavalcades, chars fleuris et mise à mort symbolique du roi du carnaval.</p>
+      <p>Plus de 100 000 spectateurs s'y retrouvent chaque année. Un rendez-vous que l'Unesco valorise pour sa capacité à fédérer toute une communauté autour de l'histoire maritime de la région.</p>
+
+      <h2>La tapisserie de Bayeux, monument textile millénaire</h2>
+      <p>Impossible d'évoquer le patrimoine normand sans citer son symbole le plus universellement reconnu : la broderie de Bayeux, souvent qualifiée à tort de « tapisserie ». Contrairement aux autres éléments de cette liste, elle ne figure pas au patrimoine mondial mais au registre Mémoire du monde depuis 2007, distinction réservée aux documents et œuvres d'une valeur historique exceptionnelle.</p>
+      <blockquote>
+        <p>« Une œuvre unique, sans réel équivalent documentaire, qui conserve aujourd'hui encore une part de mystère. »</p>
+        <cite>L'Unesco, à propos de la broderie de Bayeux</cite>
+      </blockquote>
+      <p>Ce récit brodé constitue une source précieuse pour comprendre la vie quotidienne au Moyen Âge, et tout particulièrement au XIe siècle.</p>
+
+      <h2>Deux autres distinctions à connaître</h2>
+      <p>Le palmarès normand ne s'arrête pas à ces classements Unesco au sens strict. En 2024, le Parc naturel régional Normandie-Maine a reçu le label <strong>Géoparc mondial Unesco</strong>, qui salue son travail en faveur de la préservation de la biodiversité et des paysages géologiques.</p>
+      <p>Quant à Rouen, la capitale normande a été désignée <strong>Ville créative Unesco</strong> en 2021, dans la catégorie gastronomie, reconnaissant la richesse de sa scène culinaire et de ses traditions gourmandes.</p>
+
+    </div>
+
+    <div class="article-share--alt is--article-footer">
+      <h2 class="article-share--alttitle">Cet article vous a intéressé ? Partagez-le</h2>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;gap:12px;flex-wrap:wrap;">
+        <li><button class="share-btn" aria-label="Partager sur Facebook">f</button></li>
+        <li><button class="share-btn" aria-label="Partager sur WhatsApp">w</button></li>
+        <li><button class="share-btn" aria-label="Copier le lien">🔗</button></li>
+      </ul>
+    </div>
+
+    <div class="articlenewsletter">
+      <div class="newsletter-main">
+        <p class="newsletter-maindesc">Recevez tous les jours dans votre boîte mail les principales infos de France 3 Régions.</p>
+        <button class="btn--primary" type="button">Choisir ma newsletter</button>
+      </div>
+    </div>
+
+    <div class="related-content-by-tag">
+      <h2 class="related-title">À voir également</h2>
+      <ul class="main-cards">
+        <li class="main-card--horizontal">
+          <a class="main-cardlink" href="#">
+            <div class="main-cardmedia">Image</div>
+            <p class="main-cardtitle">Les plages du Débarquement au patrimoine mondial : une garantie pour les préserver ?</p>
+          </a>
+        </li>
+        <li class="main-card--horizontal">
+          <a class="main-cardlink" href="#">
+            <div class="main-cardmedia">Image</div>
+            <p class="main-cardtitle">Utah, Omaha, Gold, Juno et Sword Beach : d'où viennent les noms des plages du Débarquement ?</p>
+          </a>
+        </li>
+        <li class="main-card--horizontal">
+          <a class="main-cardlink" href="#">
+            <div class="main-cardmedia">Image</div>
+            <p class="main-cardtitle">Sous escorte et discrétion maximale, la tapisserie de Bayeux a rejoint Londres</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer class="last-content">
+  <span class="baseline">Maquette de démonstration construite à partir d'informations publiques (Unesco, France Télévisions) — carte à personnaliser avec vos propres données géographiques.</span>
+  <span class="baseline">Charte visuelle reproduite à titre d'illustration pour présentation interne ; contenu rédactionnel entièrement réécrit, sans reprise du texte original.</span>
+</footer>
+
+</body>
+</html>
