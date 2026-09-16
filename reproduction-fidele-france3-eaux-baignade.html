@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CARTE. Qualité des eaux de baignade : où plonger en toute sécurité dans les Hauts-de-France cet été ?</title>
+<style>
+  :root {
+    --fr3-black: #202020;
+    --grey7: #5c5c5c;
+    --grey8: #424242;
+    --blue2: #0062ae;
+    --beige: #f9f4e9;
+    --stabilo: #fff2b0;
+    --grey3: #ddd;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: Brown, Arial, sans-serif;
+    color: var(--grey8);
+    background: #fff;
+    line-height: 1;
+  }
+  a { color: var(--blue2); }
+
+  /* ---------- Header ---------- */
+  .header-wrapper {
+    border-bottom: 1px solid #e6e6e6;
+  }
+  .header-main {
+    max-width: 1328px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+  }
+  .header-logo {
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--fr3-black);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  .header-logo span { color: #e5281e; }
+  .header-menu { display: flex; gap: 20px; align-items: center; }
+  .header-menu a {
+    font-size: 13px;
+    color: var(--grey8);
+    text-decoration: none;
+    padding: 6px 2px;
+  }
+  .header-menu a.is--region {
+    background: var(--blue2);
+    color: #fff;
+    border-radius: 3px;
+    padding: 6px 10px;
+    font-weight: 700;
+  }
+
+  /* ---------- En-tête article (headArticle) ---------- */
+  .headArticle {
+    background-color: var(--beige);
+    box-sizing: border-box;
+    width: 100%;
+    padding: 132px 24px 48px;
+    overflow: hidden;
+  }
+  @media (max-width: 767px) { .headArticle { padding: 132px 24px 48px; } }
+  .headArticlecontainer {
+    box-sizing: border-box;
+    max-width: 1328px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    gap: 48px;
+  }
+  .headArticleblock { flex: 1 1 50%; position: relative; }
+
+  .breadcrumb { display: block; margin-bottom: 24px; }
+  .breadcrumblist { display: flex; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; font-size: 14px; line-height: 20px; }
+  .breadcrumblistitem { display: flex; flex-wrap: nowrap; }
+  .breadcrumblistitem a { color: var(--grey8); text-decoration: none; }
+  .breadcrumblistitem a:hover { text-decoration: underline; text-underline-offset: 2px; }
+  .breadcrumblistitem .is--separator { color: #b9b9b9; padding: 0 8px; }
+
+  .headArticletitle {
+    color: var(--fr3-black);
+    font-family: Brown, Arial, sans-serif;
+    font-size: calc(27.43px + 1.43vw);
+    line-height: 1.22;
+    font-weight: 700;
+    margin: 0 0 24px;
+    word-break: break-word;
+  }
+  @media (min-width: 1440px) { .headArticletitle { font-size: 48px; line-height: 57.6px; } }
+
+  .authors { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+  .authorsavatar--placeholder {
+    display: inline-flex;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: #b9b9b9;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .authorstext { font-size: 14px; }
+  .author-link {
+    color: var(--fr3-black);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .author-link:hover { text-decoration: underline; }
+
+  .authordates, .reading-time {
+    color: var(--grey7);
+    font-family: Brown, Arial, sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+  }
+  .authordates { margin-bottom: 8px; }
+  .authordates .datepublished time { margin-left: 4px; }
+  .reading-time { gap: 6px; margin-top: 8px; }
+  .reading-timeicon {
+    width: 12px; height: 12px;
+    background: repeating-linear-gradient(0deg, #5c5c5c 0 1px, transparent 1px 4px);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .headArticleblock--titledata-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* ---------- Partage haut ---------- */
+  .article-share--alt.is--default {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .share-btn {
+    height: 36px; width: 36px;
+    border: 1px solid var(--grey3);
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+  }
+  .share-btn:hover { background: #f1f1f1; }
+
+  /* ---------- Corps article ---------- */
+  .articlepage {
+    display: flex;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 56px;
+  }
+  @media (max-width: 1199px) { .articlepage { padding: 0 24px; } }
+  .articlepage > .article { flex: 1 1 100%; padding: 0 48px; }
+  @media (max-width: 1199px) { .articlepage > .article { padding: 0; } }
+
+  .articlebody {
+    color: var(--grey8);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 48px auto;
+    max-width: 630px;
+    position: relative;
+  }
+  .articlebody .articleintro {
+    color: var(--fr3-black);
+    font-family: Brown, Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 30px;
+    margin-bottom: 48px;
+  }
+  .articlebody strong { background-color: var(--stabilo); }
+  .articlebody p { margin: 0 0 24px; }
+  .articlebody h2 {
+    color: var(--fr3-black);
+    font-size: 26px;
+    line-height: 1.1;
+    margin: 48px 0 16px;
+    font-weight: 700;
+  }
+  .articlebody a:not(.author-link) {
+    border-bottom: 1px solid var(--blue2);
+    color: var(--blue2);
+    padding-bottom: 2px;
+    text-decoration: none;
+  }
+  .articlebody a:not(.author-link):hover { border-bottom: 2px solid var(--blue2); }
+  .articlebody ul { list-style: none; margin: 16px 0; padding: 0; }
+  .articlebody ul li { margin-bottom: 24px; padding-left: 16px; position: relative; }
+  .articlebody ul li::before {
+    content: "";
+    background: var(--blue2);
+    display: inline-block;
+    height: 8px; width: 8px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0; top: 10px;
+  }
+  .articlebody iframe {
+    margin: 48px auto;
+    max-width: 100%;
+    display: block;
+    width: 100%;
+    border: 0;
+  }
+
+  /* ---------- Partage bas ---------- */
+  .article-share--alt.is--article-footer {
+    border-top: 1px solid var(--grey3);
+    display: block;
+    margin: 48px auto 0;
+    padding: 24px 0 0;
+    width: 100%;
+  }
+  .article-share--alttitle {
+    color: var(--fr3-black);
+    display: block;
+    font-family: Brown, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    margin: 0 0 24px;
+  }
+
+  /* ---------- Newsletter ---------- */
+  .articlenewsletter { padding: 48px 0 0; }
+  .newsletter-main {
+    background: #f8f8f8;
+    border-radius: 6px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .newsletter-maindesc { font-size: 14px; line-height: 20px; margin: 0; }
+  .btn--primary {
+    background: var(--blue2);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: Brown, Arial, sans-serif;
+  }
+
+  /* ---------- Contenus liés ---------- */
+  .related-content-by-tag { border-top: 1px solid var(--grey3); margin-top: 48px; padding: 24px 0; }
+  .related-title {
+    color: var(--fr3-black);
+    font-family: Brown, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 16px;
+  }
+  .main-cards { display: flex; gap: 24px; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+  .main-card--horizontal { flex: 1 1 240px; max-width: 296px; }
+  .main-cardlink { text-decoration: none; color: inherit; display: block; }
+  .main-cardmedia {
+    border-radius: 5px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #bfe0f0 0%, #d9ecf7 100%);
+    aspect-ratio: 3/2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a7fa5;
+    font-size: 13px;
+  }
+  .main-cardtitle {
+    color: var(--fr3-black);
+    font-family: Brown, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    margin: 12px 0 0;
+  }
+
+  /* ---------- Footer ---------- */
+  .last-content {
+    background: #f7f3f0;
+    color: #001e55;
+    padding: 48px 24px;
+    text-align: center;
+    margin-top: 48px;
+  }
+  .last-content .baseline { display: block; padding-bottom: 16px; font-size: 15px; }
+
+  /* ---------- Bandeau démo ---------- */
+  .bandeau-demo {
+    background: #fffbe6;
+    border-bottom: 1px dashed #d4a900;
+    color: #6b5900;
+    text-align: center;
+    font-size: 11px;
+    padding: 4px;
+    font-family: Arial, sans-serif;
+  }
+</style>
+</head>
+<body>
+
+<div class="bandeau-demo">Maquette de démonstration — structure et charte reproduites à des fins d'illustration ; texte rédigé indépendamment des données publiques</div>
+
+<header class="header-wrapper">
+  <div class="header-main">
+    <a class="header-logo" href="#">franceinfo<span>:</span></a>
+    <nav class="header-menu">
+      <a href="#">Actualités</a>
+      <a href="#">France</a>
+      <a href="#">Régions</a>
+      <a href="#" class="is--region">Hauts-de-France</a>
+      <a href="#">Direct</a>
+      <a href="#">Videos</a>
+    </nav>
+  </div>
+</header>
+
+<div class="headArticle">
+  <div class="headArticlecontainer">
+    <div class="headArticleblock headArticleblock--title">
+      <nav class="breadcrumb" aria-label="Fil d'ariane">
+        <ol class="breadcrumblist">
+          <li class="breadcrumblistitem"><a href="#">Accueil</a></li>
+          <li class="breadcrumblistitem"><span class="is--separator" aria-hidden="true">›</span></li>
+          <li class="breadcrumblistitem"><a href="#">Hauts-de-France</a></li>
+          <li class="breadcrumblistitem"><span class="is--separator" aria-hidden="true">›</span></li>
+          <li class="breadcrumblistitem"><a href="#">Somme</a></li>
+        </ol>
+      </nav>
+      <div class="headArticleblock--titledata-wrapper">
+        <h1 class="headArticletitle">CARTE. Qualité des eaux de baignade : où plonger en toute sécurité dans les Hauts-de-France cet été ?</h1>
+
+        <div class="authors">
+          <span class="authorsavatar--placeholder">EE</span>
+          <div class="authorstext">
+            <a class="author-link" href="#">Eline Erzilbengoa</a>
+            <div class="authordates">
+              <span class="datepublished">Publié le <time datetime="22/07/2026 07h00">22/07/2026 07h00</time></span>
+            </div>
+            <div class="reading-time">
+              <span class="reading-timeicon" aria-hidden="true"></span>
+              Temps de lecture 3 min
+            </div>
+          </div>
+        </div>
+
+        <ul class="article-share--alt is--default" style="list-style:none;margin:0;padding:0;display:flex;gap:12px;">
+          <li><button class="share-btn" aria-label="Partager sur Facebook" title="France3 Régions sur Facebook">f</button></li>
+          <li><button class="share-btn" aria-label="Partager sur WhatsApp" title="France3 Régions sur WhatsApp">w</button></li>
+          <li><button class="share-btn" aria-label="Copier le lien">🔗</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="articlepage" id="mainContent">
+  <div class="article">
+    <div class="articlebody">
+
+      <p class="articleintro">Les fortes chaleurs de juillet poussent les habitants et les vacanciers des Hauts-de-France vers les points d'eau de la région. Pour se baigner sans risque, voici l'état des lieux de la qualité des eaux de baignade, du littoral aux plans d'eau intérieurs.</p>
+
+      <p>Thermomètres au plus haut et envie de fraîcheur : la saison estivale 2026 confirme l'attractivité des <strong>zones de baignade</strong> des Hauts-de-France. Mais entre les plages de la Manche et de la mer du Nord et les étangs de l'intérieur, toutes les eaux ne se valent pas. Le suivi coordonné par le <a href="https://baignades.sante.gouv.fr">ministère chargé de la Santé</a> et les agences régionales de santé dresse un bilan globalement rassurant : la grande majorité des sites surveillés affiche une eau de bonne ou d'excellente qualité.</p>
+
+      <iframe
+        src="https://macarte.ign.fr/carte/vE440T/Qualite-des-eaux-de-baignade-Hauts-de-France"
+        width="100%"
+        height="480px"
+        allow="geolocation;clipboard-read;clipboard-write"
+        title="Carte IGN — Qualité des eaux de baignade dans les Hauts-de-France">
+      </iframe>
+
+      <h2>Littoral : une qualité en progression, mais sensible aux orages</h2>
+      <p>La façade maritime de la région affiche une tendance à l'amélioration en 2026 : plusieurs plages, comme Grand-Fort-Philippe, Tardinghen, Wimereux, Cucq ou Merlimont, sont passées d'une eau de « bonne » à « excellente » qualité, un progrès souligné dans le palmarès publié par l'<a href="https://www.eau-artois-picardie.fr">Agence de l'eau Artois-Picardie</a>.</p>
+      <p>Le principal point de vigilance reste météorologique. En cas de fortes pluies estivales, le ruissellement agricole et urbain peut saturer les réseaux d'assainissement et entraîner des rejets en mer chargés en bactéries (<em>Escherichia coli</em>) ou en pesticides. Conséquence : des fermetures préventives de baignade, le plus souvent de l'ordre de 24 à 48 heures.</p>
+
+      <h2>Eaux douces : la menace des cyanobactéries</h2>
+      <p>À l'intérieur des terres, ce n'est pas la pollution d'origine humaine qui inquiète le plus, mais la conjugaison de la stagnation de l'eau et du réchauffement climatique. Sans courant et avec des températures en hausse, certains plans d'eau favorisent le développement des cyanobactéries, des microalgues qui libèrent des toxines pouvant provoquer irritations cutanées et troubles digestifs. Difficilement prévisible, ce phénomène est à l'origine des interdictions de baignade les plus longues en plein été.</p>
+
+      <h2>Le point département par département</h2>
+      <ul>
+        <li><strong>Pas-de-Calais :</strong> c'est le département qui concentre le plus de sites de baignade, grâce à sa façade maritime. Nettes améliorations à Escalles, Le Portel et Camiers (Saint-Gabriel), autrefois classées « insuffisantes ». En revanche, l'eau de Boulogne-sur-Mer reste jugée insuffisante, une situation qui perdure depuis 2023.</li>
+        <li><strong>Nord :</strong> entre les plages de la mer du Nord (Malo-les-Bains, Bray-Dunes) et les plans d'eau intérieurs (Près du Hem, plage de Rieulay, Val Joly), la qualité est majoritairement bonne à excellente, avec une surveillance renforcée sur certaines communes.</li>
+        <li><strong>Somme :</strong> les plages ouvertes du littoral (Quend, Fort-Mahon) offrent une eau de belle qualité. En revanche, la baie de Somme, écosystème fermé et vaseux où l'eau se brasse mal, reste problématique : la baignade au Crotoy est fermée pour raisons sanitaires et non classée depuis 2018.</li>
+        <li><strong>Oise :</strong> sans littoral, la baignade repose entièrement sur les bases de loisirs aménagées, surveillées de près par l'ARS durant les épisodes caniculaires de 2026.</li>
+        <li><strong>Aisne :</strong> même dépendance aux plans d'eau artificiels. À l'étang d'Isle (Saint-Quentin), des concentrations élevées d'<em>Escherichia coli</em> et d'entérocoques intestinaux sont relevées : la baignade n'y est pas interdite, mais le site fait l'objet de contrôles réguliers.</li>
+      </ul>
+
+      <p>Quel que soit le département, la règle d'or reste la même : privilégier les <strong>zones de baignade surveillées</strong> et respecter la couleur du drapeau hissé sur le site.</p>
+
+    </div>
+
+    <div class="article-share--alt is--article-footer">
+      <h2 class="article-share--alttitle">Cet article vous a intéressé ? Partagez-le</h2>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;gap:12px;flex-wrap:wrap;">
+        <li><button class="share-btn" aria-label="Partager sur Facebook">f</button></li>
+        <li><button class="share-btn" aria-label="Partager sur WhatsApp">w</button></li>
+        <li><button class="share-btn" aria-label="Copier le lien">🔗</button></li>
+      </ul>
+    </div>
+
+    <div class="articlenewsletter">
+      <div class="newsletter-main">
+        <p class="newsletter-maindesc">Recevez tous les jours dans votre boîte mail les principales infos de France 3 Régions.</p>
+        <button class="btn--primary" type="button">Choisir ma newsletter</button>
+      </div>
+    </div>
+
+    <div class="related-content-by-tag">
+      <h2 class="related-title">À voir également</h2>
+      <ul class="main-cards">
+        <li class="main-card--horizontal">
+          <a class="main-cardlink" href="#">
+            <div class="main-cardmedia">Image</div>
+            <p class="main-cardtitle">Hotte du diable, baie de Somme, fort de Chantilly : 4 idées de randonnées en Picardie</p>
+          </a>
+        </li>
+        <li class="main-card--horizontal">
+          <a class="main-cardlink" href="#">
+            <div class="main-cardmedia">Image</div>
+            <p class="main-cardtitle">Quels sont les endroits atypiques à découvrir cet été dans le Nord et le Pas-de-Calais ?</p>
+          </a>
+        </li>
+        <li class="main-card--horizontal">
+          <a class="main-cardlink" href="#">
+            <div class="main-cardmedia">Image</div>
+            <p class="main-cardtitle">Un nouveau parc d'attractions ouvre ses portes après deux années de travaux</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer class="last-content">
+  <span class="baseline">Maquette de démonstration construite à partir des données publiques du ministère chargé de la Santé (baignades.sante.gouv.fr) et de l'Agence de l'eau Artois-Picardie — carte hébergée sur Macarte (IGN).</span>
+  <span class="baseline">Charte visuelle reproduite à titre d'illustration pour présentation ; contenu rédactionnel rédigé indépendamment, sans reprise du texte original.</span>
+</footer>
+
+</body>
+</html>
