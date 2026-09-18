@@ -88,21 +88,6 @@
   }
   @media (min-width: 1440px) { .headArticletitle { font-size: 48px; line-height: 57.6px; } }
 
-  .headArticleillustration {
-    border-radius: 5px;
-    overflow: hidden;
-    aspect-ratio: 3/2;
-    background: linear-gradient(135deg, #cfe3d0 0%, #e8f0d8 45%, #f4e6c1 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #4a6b4f;
-    font-size: 14px;
-    text-align: center;
-    padding: 1rem;
-  }
-  .illustrationcredits { color: var(--grey7); font-size: 12px; line-height: 16px; padding-top: 12px; display: block; }
-
   .authors { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
   .authorsavatar--placeholder {
     display: inline-flex; width: 40px; height: 40px; border-radius: 50%;
@@ -256,6 +241,7 @@
       <figure class="headArticleillustration">
         <img src="images/andic-mont-saint-michel-556673_1920.jpg"
              alt="Le Mont-Saint-Michel et sa baie"
+             style="width:100%; height:100%; object-fit:cover; border-radius:5px; display:block;">
       </figure>
           <span class="illustrationcredits">Le Mont-Saint-Michel et sa baie, premier site normand classé au patrimoine mondial, dès 1979.</span>
     </div>
